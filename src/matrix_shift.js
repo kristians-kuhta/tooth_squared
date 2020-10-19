@@ -58,7 +58,7 @@ function shiftMatrixDown(matrix, currentScore) {
   let newMatrix = [new Array(4), new Array(4), new Array(4), new Array(4)];
 
   for (let colIdx = 0; colIdx < 4; colIdx++) {
-    let currentColumn = matrix.map((row) => row[colIdx]).reverse();
+    let currentColumn = matrix.map((row) => row[colIdx]);
     let shiftedColumn = shiftVector(currentColumn, true);
 
     let [ newColumn, rowScore ] = squashVectorValues(shiftedColumn, true);
