@@ -60,6 +60,8 @@ class Game extends React.Component {
 	  return { score: newScore, tiles: newTiles };
 	});
 	break;
+      default:
+	break;
     }
   }
 
