@@ -35,28 +35,37 @@ class Game extends React.Component {
   }
 
   handleKeyDown(e) {
+    // TODO: make this DRY
     switch (e.key) {
       case 'ArrowUp':
 	this.setState((state) => {
-	  let [newTiles, newScore] = shiftMatrixUp(this.state.tiles, this.state.score);
+	  let [shiftedTiles, newScore] = shiftMatrixUp(this.state.tiles, this.state.score);
+	  let newTiles = this.tilesWithNewTile(shiftedTiles);
+
 	  return { score: newScore, tiles: newTiles };
 	});
 	break;
       case 'ArrowDown':
 	this.setState((state) => {
-	  let [newTiles, newScore] = shiftMatrixDown(this.state.tiles, this.state.score);
+	  let [shiftedTiles, newScore] = shiftMatrixDown(this.state.tiles, this.state.score);
+	  let newTiles = this.tilesWithNewTile(shiftedTiles);
+
 	  return { score: newScore, tiles: newTiles };
 	});
 	break;
       case 'ArrowLeft':
 	this.setState((state) => {
-	  let [newTiles, newScore] = shiftMatrixLeft(this.state.tiles, this.state.score);
+	  let [shiftedTiles, newScore] = shiftMatrixLeft(this.state.tiles, this.state.score);
+	  let newTiles = this.tilesWithNewTile(shiftedTiles);
+
 	  return { score: newScore, tiles: newTiles };
 	});
 	break;
       case 'ArrowRight':
 	this.setState((state) => {
-	  let [newTiles, newScore] = shiftMatrixRight(this.state.tiles, this.state.score);
+	  let [shiftedTiles, newScore] = shiftMatrixRight(this.state.tiles, this.state.score);
+	  let newTiles = this.tilesWithNewTile(shiftedTiles);
+
 	  return { score: newScore, tiles: newTiles };
 	});
 	break;
@@ -64,6 +73,28 @@ class Game extends React.Component {
 	break;
     }
   }
+
+  tilesWithNewTile(tiles) {
+    let freeTiles = [];
+
+    // Two dimensional array of free [rowIdx, colIdx] within tiles
+    for (let i = 0; i < tiles.length; i++) {
+      for (let j = 0; j < tiles[0].length; j++) {
+	if (tiles[i][j]) {
+	  continue;
+	}
+
+	freeTiles.push([i, j]);
+      }
+    }
+
+    let chosenTile = freeTiles.splice(this.randomPositiveInteger(freeTiles.length), 1)[0];
+
+    tiles[chosenTile[0]][chosenTile[1]] = this.randomTileValue();
+
+    return tiles;
+  }
+
 
   generateInitialTiles() {
     let tiles = this.state.tiles;
