@@ -1,5 +1,5 @@
 import React from 'react';
-import './ScoreBoard.css';
+import 'components/ScoreBoard/ScoreBoard.css';
 
 class ScoreBoard extends React.Component {
   state = {

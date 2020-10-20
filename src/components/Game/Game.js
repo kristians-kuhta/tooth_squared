@@ -1,13 +1,13 @@
 import React from 'react';
-import './Game.css';
-import Board from '../Board/Board';
-import ScoreBoard from '../ScoreBoard/ScoreBoard';
+import 'components/Game/Game.css';
+import Board from 'components/Board/Board';
+import ScoreBoard from 'components/ScoreBoard/ScoreBoard';
 import {
   shiftMatrixRight,
   shiftMatrixLeft,
   shiftMatrixDown,
   shiftMatrixUp
-} from '../../matrix_shift.js';
+} from 'matrix_shift.js';
 
 // There 20% / 80% chance to get 4 / 2
 const NEW_TILE_SAMPLE = [4, 2, 2, 2];

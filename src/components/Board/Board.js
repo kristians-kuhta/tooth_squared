@@ -1,5 +1,5 @@
 import React from 'react';
-import './Board.css';
+import 'components/Board/Board.css';
 
 const NUMBER_OF_TILE_COLORS = 11;
 
