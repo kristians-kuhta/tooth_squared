@@ -1,6 +1,6 @@
 import React from 'react';
 import './Game.css';
-import GameArea from '../GameArea/GameArea';
+import Board from '../Board/Board';
 import {
   shiftMatrixRight,
   shiftMatrixLeft,
@@ -131,8 +131,8 @@ class Game extends React.Component {
   render() {
     // TODO: add the score and personal record components here
     return (
-      <div className='game' key='1'>
-	<GameArea tiles={this.state.tiles} />
+      <div className='game' key='game'>
+	<Board tiles={this.state.tiles} />
       </div>
     );
   }

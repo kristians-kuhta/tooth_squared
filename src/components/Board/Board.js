@@ -1,11 +1,9 @@
 import React from 'react';
-import './GameArea.css';
+import './Board.css';
 
 const NUMBER_OF_TILE_COLORS = 11;
-// const CHANCE_OF_TILE_TWO = 0.8;
-// const CHANCE_OF_TILE_FOUR = 0.2;
 
-class GameArea extends React.Component {
+class Board extends React.Component {
 
   // For now we define colors only up to 2^11=2048 tile,
   // therefore this function returns values in range [0, 11]
@@ -44,9 +42,8 @@ class GameArea extends React.Component {
   }
 
   render() {
-    // TODO: add the score and personal record components here
     return <div className="tiles">{ this.tileElements() }</div>;
   }
 }
 
-export default GameArea;
+export default Board;
