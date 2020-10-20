@@ -1,6 +1,7 @@
 import React from 'react';
 import './Game.css';
 import Board from '../Board/Board';
+import ScoreBoard from '../ScoreBoard/ScoreBoard';
 import {
   shiftMatrixRight,
   shiftMatrixLeft,
@@ -17,6 +18,7 @@ class Game extends React.Component {
 
     this.state = {
       score: 0,
+      highScore: 0,
       tiles: [
 	[null, null, null, null],
 	[null, null, null, null],
@@ -42,7 +44,13 @@ class Game extends React.Component {
 	  let [shiftedTiles, newScore] = shiftMatrixUp(this.state.tiles, this.state.score);
 	  let newTiles = this.tilesWithNewTile(shiftedTiles);
 
-	  return { score: newScore, tiles: newTiles };
+	  let newHighScore = this.state.highScore;
+
+	  if (newScore > this.state.highScore) {
+	    newHighScore = newScore;
+	  }
+
+	  return { score: newScore, highScore: newHighScore, tiles: newTiles };
 	});
 	break;
       case 'ArrowDown':
@@ -50,7 +58,13 @@ class Game extends React.Component {
 	  let [shiftedTiles, newScore] = shiftMatrixDown(this.state.tiles, this.state.score);
 	  let newTiles = this.tilesWithNewTile(shiftedTiles);
 
-	  return { score: newScore, tiles: newTiles };
+	  let newHighScore = this.state.highScore;
+
+	  if (newScore > this.state.highScore) {
+	    newHighScore = newScore;
+	  }
+
+	  return { score: newScore, highScore: newHighScore, tiles: newTiles };
 	});
 	break;
       case 'ArrowLeft':
@@ -58,7 +72,13 @@ class Game extends React.Component {
 	  let [shiftedTiles, newScore] = shiftMatrixLeft(this.state.tiles, this.state.score);
 	  let newTiles = this.tilesWithNewTile(shiftedTiles);
 
-	  return { score: newScore, tiles: newTiles };
+	  let newHighScore = this.state.highScore;
+
+	  if (newScore > this.state.highScore) {
+	    newHighScore = newScore;
+	  }
+
+	  return { score: newScore, highScore: newHighScore, tiles: newTiles };
 	});
 	break;
       case 'ArrowRight':
@@ -66,7 +86,13 @@ class Game extends React.Component {
 	  let [shiftedTiles, newScore] = shiftMatrixRight(this.state.tiles, this.state.score);
 	  let newTiles = this.tilesWithNewTile(shiftedTiles);
 
-	  return { score: newScore, tiles: newTiles };
+	  let newHighScore = this.state.highScore;
+
+	  if (newScore > this.state.highScore) {
+	    newHighScore = newScore;
+	  }
+
+	  return { score: newScore, highScore: newHighScore, tiles: newTiles };
 	});
 	break;
       default:
@@ -132,6 +158,7 @@ class Game extends React.Component {
     // TODO: add the score and personal record components here
     return (
       <div className='game' key='game'>
+	<ScoreBoard score={this.state.score} highScore={this.state.highScore} />
 	<Board tiles={this.state.tiles} />
       </div>
     );

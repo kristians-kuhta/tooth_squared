@@ -42,7 +42,7 @@ class Board extends React.Component {
   }
 
   render() {
-    return <div className="tiles">{ this.tileElements() }</div>;
+    return <div className="board">{ this.tileElements() }</div>;
   }
 }
 
