@@ -2,7 +2,8 @@
 Clone of popular 2048 game.
 Uses React framework.
 
-![Tooth Squared App](docs/tooth_squared.png =50%)
+<img src="docs/tooth_squared.png" alt="tooth-squared-app" width="50%" height="auto">
+
 
 ## Getting started
 
