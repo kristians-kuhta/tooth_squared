@@ -2,7 +2,7 @@
 Clone of popular 2048 game.
 Uses React framework.
 
-(Tooth Squared App)[docs/tooth_squared.png]
+[Tooth Squared App](docs/tooth_squared.png)
 
 ## Getting started
 
